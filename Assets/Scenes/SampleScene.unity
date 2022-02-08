@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f80d3ebee125b444ba132abb4ed5071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: {fileID: 813675041}
-  _enemy: {fileID: 8849871580394606910, guid: f29e1fdcef1276942a7d93857dc93653, type: 3}
+  _pointsParent: {fileID: 813675041}
+  _enemy: {fileID: -7479685966792968000, guid: f29e1fdcef1276942a7d93857dc93653, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

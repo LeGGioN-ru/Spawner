@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Transform _path;
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private Transform _pointsParent;
+    [SerializeField] private Enemy _enemy;
 
-    private Transform[] _pointsInPath;
+    private Transform[] _childPoints;
     private bool _isOn = true;
     private WaitForSecondsRealtime _sleepTime;
 
@@ -15,12 +15,12 @@ public class Spawner : MonoBehaviour
     {
         int spawnDelaySeconds = 2;
 
-        _pointsInPath = new Transform[_path.childCount];
+        _childPoints = new Transform[_pointsParent.childCount];
         _sleepTime = new WaitForSecondsRealtime(spawnDelaySeconds);
 
-        for (int i = 0; i < _path.childCount; i++)
+        for (int i = 0; i < _pointsParent.childCount; i++)
         {
-            _pointsInPath[i] = _path.GetChild(i);
+            _childPoints[i] = _pointsParent.GetChild(i);
         }
 
         StartCoroutine(StartSpawn());
@@ -32,11 +32,11 @@ public class Spawner : MonoBehaviour
 
         while (_isOn)
         {
-            Instantiate(_enemy, _pointsInPath[currentDot]);
+            Instantiate(_enemy, _childPoints[currentDot]);
 
             currentDot++;
 
-            if (currentDot == _pointsInPath.Length)
+            if (currentDot == _childPoints.Length)
             {
                 currentDot = 0;
             }
